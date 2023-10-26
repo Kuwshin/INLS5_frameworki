@@ -12,4 +12,7 @@ class Article(models.Model):
     image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.title_with_year()
+    def title_with_year(self):
+        return f"{self.title} ({self.year})"
+   

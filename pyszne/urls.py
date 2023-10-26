@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from pyszne_web.views import articles, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('articles/', articles, name='articles'),
+    path('', index, name='index'),
 ]
