@@ -3,12 +3,10 @@ from .models import Article
 
 
 # Register your models here.
-admin.site.register(Article)
-list_filter = ["year", "author", "category"]
-search_fields = ["title", "content"]
-list_display = ["title", "author", "category", "published"]
-list_editable = ["category"]
-list_per_page = 10
-admin.site.site_header = "Pyszne Admin"
-admin.site.site_title = "Pyszne Admin Portal"
-admin.site.index_title = "Welcome to Pyszne Portal"
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    fields = ['title', 'year', 'content', 'author', 'category', 'image']
+    list_display = ('title', 'year', 'author', 'category')
+    list_filter = ('author', 'category', 'year')
+    search_fields = ('title', 'content')
+
